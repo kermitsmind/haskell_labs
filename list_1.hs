@@ -98,6 +98,9 @@ fibonacci n = fib (n-2) 0 1
 
 -- Exercise 8. See the documentation of the function zipWith. Create an infinite list list of 
 -- Fibonacci numbers using zipWith and lazy evaluation.
+fib1 :: [Integer]
+fib1 = 1:1:zipWith(+) (fib1) (tail fib1) 
+fib_nth n = fib1 !! n
 
 
 
