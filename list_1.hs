@@ -37,7 +37,6 @@ tailRecursiveRev (x : xs) = rev' xs [x]
 
 
 
-
 -- Exercise 3. Implement a function that for a given natural n quickly counts the amount of zeros at the end of n!
 trailingZeros n
   | divided == 0 = 0
@@ -47,7 +46,7 @@ trailingZeros n
 
 
 
--- Exercise 4. Implement your own functions that curry and de-curry functions, i.e. for f∈C(A×B) andg∈(CB)A
+-- Exercise 4. Implement your own functions that curry and de-curry functions, i.e. for f∈C(A×B) and g∈(CB)A
 -- (my curry f) a b = f (a,b), (my decurry g) (a,b) = g a b.
 add_f (x,y) = x+y
 add_g x y = x+y
@@ -71,19 +70,19 @@ primes n = sieve [2..n]
 
 -- Exercise 6. The Euler’s totient function φ : N+ → N is defined as follows
 --             φ(n)=|{k∈N+ :k􏰀n&gcd(k,n)=1}|. 
---     Implement   
---     (a) the Euler’s totient function.
---     (b) a function f(n) = Ed∈{k∈N+:k|n} φ(d). (*) Put forward a hypothesis and try to prove it.
+-- Implement   
+-- (a) the Euler’s totient function.
+-- (b) a function f(n) = Ed∈{k∈N+:k|n} φ(d). (*) Put forward a hypothesis and try to prove it.
 totient m = length([p | p <- [1..m], (gcd p m) == 1])
 
 
 
 -- Exercise 7. 
-    -- (a) Implement a function that calculates the n-th member of Fibonacci se- quence in a linear time.
-    -- (b) The same for the sequence
-    --     a0 = 1,
-    --     a1 = 1,
-    --     an = n + an−1 + an−2.
+-- (a) Implement a function that calculates the n-th member of Fibonacci sequence in a linear time.
+-- (b) The same for the sequence
+--     a0 = 1,
+--     a1 = 1,
+--     an = n + an−1 + an−2.
 fib 0 x y = x+y
 fib i x y = fib (i-1) y (x+y)
 fibonacci 0 = 1
@@ -105,12 +104,12 @@ fib_nth n = fib1 !! n
 
 
 -- Exercise 9. Implement a function
---     (a) ecd that for a given string (a list of chars) eliminates consecutive duplicates, i.e.
---         ecd [1,1,2,3,3] == [1,2,3].
---     (b) encode that for a given string encodes consecutive duplicates with an integer, i.e.
---         encode [a,a,a,b,b,a,a] == [(a,3), (b,2), (a,2)]. 
---     (c) decode that decodes the previous one, i.e.
---         decode (encode xs) == xs
+-- (a) ecd that for a given string (a list of chars) eliminates consecutive duplicates, i.e.
+--     ecd [1,1,2,3,3] == [1,2,3].
+-- (b) encode that for a given string encodes consecutive duplicates with an integer, i.e.
+--     encode [a,a,a,b,b,a,a] == [(a,3), (b,2), (a,2)]. 
+-- (c) decode that decodes the previous one, i.e.
+--     decode (encode xs) == xs
 ecd [] = []
 ecd (x:xs) = copy x xs
  where 
@@ -136,13 +135,13 @@ decode (x:xs) = pom1 x xs []
 
 
 
--- Exercise 10. Implement a function rev rev that for a list of string returns the reversed
+-- Exercise 10. Implement a function rev_rev that for a list of string returns the reversed
 -- list of reversed strings, i.e.
 -- rev rev ["abc","xyz"] == ["zyx","cba"].
--- oneStr :: [Char] -> [Char]
+oneStr :: [Char] -> [Char]
 oneStr s = foldl (\x y -> y:x) [] s
 
--- rev_rev :: [[Char]] -> [[Char]]
+rev_rev :: [[Char]] -> [[Char]]
 rev_rev [] = []
 rev_rev s = foldl (\x y -> y:x) [] (map oneStr s)
 
@@ -162,8 +161,8 @@ power_list (x:xs) = [x:sublist | sublist <- power_list xs] ++ power_list xs
 
 
 -- Exercise 13. Implement a function perm that for a given list returns the list of all its
--- permutations, i.e. perm [1,2,3] == [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]. You may assume that the 
--- list is without duplicates.
+-- permutations, i.e. perm [1,2,3] == [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]].  
+-- You may assume that the list is without duplicates.
 perm1 :: [a] -> [[a]]
 perm1 [] = [[]]
 perm1 (x:xs) =

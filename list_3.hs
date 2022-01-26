@@ -37,23 +37,24 @@ map1 f xs = foldr (\x acc -> f x : acc) [] xs
 comp = \g f x -> g (f x)
 
 
+
 -- Exercise 4. The expression let x=y in z is a ”syntactic sugar” for a certain expression in lambda calculus. Desugar it.
--- let x=y in z  is equal to let (\x -> y) in z =eta-red. lambdax.y
+-- let x=y in z  is equal to let (\x -> y) in z = eta-red. lambdax.y
 -- let x=y in z ~(lambdax -> z)y
+
 
 
 -- Exercise 5. Let π1 =\x y->x and π2 =\x y->y. Calculate π1.π2 and π2.π1.
 -- fg = (\f g x y -> f (g (x y))
 -- pi1=(\x y -> x)
 -- pi2=(\x y -> y)
-
 -- pi1pi2 = pi1.pi2
 
 
 
 -- Exercise 6. Come up with a lambda expression that cannot be β-reduced to a form that does not allow further β-reduction. 
 -- (lambdax -> (x x)) = z
--- z z = (lambdax)-> (x x))z =beta-red.= z z
+-- z z = (lambdax)-> (x x))z = beta-red. = z z
 -- infinite loop
 -- for example: (\x -> (x x)) (\y -> (y y))
 
@@ -74,7 +75,7 @@ surface (Rectangle (Point x y) (Point x1 y1)) = abs(x1-x)*abs(y1-y)
 
 -- Exercise 8. Let us define
 --         data Vector3D a = Vector a a a
--- that models 3D vectors. Define addition, multiplication by a scalar and scalar multiplica- tion for your vectors. 
+-- that models 3D vectors. Define addition, multiplication by a scalar and scalar multiplication for your vectors. 
 -- Make it an instance of the class Show.
 data Vector3 a = Vector3 a a a 
 
@@ -104,7 +105,7 @@ instance Show a => Show (Vector3 a) where
 -- b) Make it an instance of the class Functor by implementing fmap for trees.
 -- c) Make it an instance of the class Foldable by implementing foldr and foldl. They should ”start” from the 
 --    right-most branch and the left-most branch respectively.
--- d) Implement functions that count the number of roots, count the number of leafs, de- termine whether a given x is 
+-- d) Implement functions that count the number of roots, count the number of leafs, determine whether a given x is 
 --    an element of a tree, calculate the height of a tree. Fold may be useful here.
 data Tree a = Empty | Leaf a | Node (Tree a) a (Tree a) -- deriving (Show)
 

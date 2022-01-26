@@ -63,12 +63,15 @@ mean xs = if null xs
 -- foldr :: (a -> b -> b) -> b -> [a] -> b
 -- foldr f z [x1,x2,..,xn] = f(x1,f(x2(..f(xn-1,f(xn,z))..))
 
+
+
 -- Exercise 6. Express map via foldr and foldl. Hint: it may be a good idea to use z=[].
 myMapR f = foldr(\x xs -> f x : xs ) []
 myMapL f = foldl(\xs x ->  xs ++ [(f x)] ) []
 
 
--- Exercise 7. Implement a function rev rev :: [[Char]] -> [[Char]] that takes a list of strings and returns the list 
+
+-- Exercise 7. Implement a function rev_rev :: [[Char]] -> [[Char]] that takes a list of strings and returns the list 
 -- of reversed strings in reversed order, i.e. rev rev ["lorem", "ipsum"] == ["muspi", "merol"]
 -- oneStr :: [Char] -> [Char]
 oneStr s = foldl (\x y -> y:x) [] s
@@ -79,10 +82,10 @@ rev_rev s = foldl (\x y -> y:x) [] (map oneStr s)
 
 
 
--- Exercise 8. Implement a function my filter :: a -> Bool -> [a] -> [a] that takes a predicate p :: a -> Bool, list of 
+-- Exercise 8. Implement a function my_filter :: a -> Bool -> [a] -> [a] that takes a predicate p :: a -> Bool, list of 
 -- elements, and returns a list of elements satisfying p in two ways:
---     (i) using recursion without maps or folds; 
---     (ii) using maps or folds.
+-- (i) using recursion without maps or folds; 
+-- (ii) using maps or folds.
 -- p :: a  -> Bool
 -- p x | x > 0 = True
 --    | otherwise = False
@@ -90,7 +93,7 @@ myFilter_1 :: (a -> Bool) -> [a] -> [a]
 myFilter_1 _ [] = []
 myFilter_1 p (x:xs) | p x = x : myFilter_1 p xs
                     | otherwise = myFilter_1 p xs
--- to run ine needs to type: myFilter_1 (p) [-1,2,3]
+-- to run it one needs to type: myFilter_1 (p) [-1,2,3]
 
 myFilter_2 :: (a -> Bool) -> [a] -> [a]
 myFilter_2 _ [] = []
@@ -98,7 +101,7 @@ myFilter_2 p xs = [ x|x <- xs, p x ]
 
 
 
--- Exercise 9. Implement a function approx e :: Int -> Double calculating for each na- tural 􏰁n 1 for each natural n. 
+-- Exercise 9. Implement a function approx e :: Int -> Double calculating for each natural 􏰁n 1 for each natural n. 
 -- It should work pretty fast, e.g. calculating k! from the k=0 k! ground with each ”iteration” is unacceptable. 
 -- Hint: use accumulator storing k!
 inv x = 1 / x
@@ -109,8 +112,10 @@ facHelper n acc = facHelper (n-1) (acc*n)
 factorial 0 = 1
 factorial n = facHelper n 1
 
-approx_e :: Int -> Double 
-approx_e n
-    | n == 0 = 1
-    | n == 1 = 2
-    | otherwise = 2 + sum (map (\n->1/(fromIntegral n)^2) [2..n])
+approx_e_helper :: Int -> Int -> Double -> Double 
+approx_e_helper n it sum
+  | (n > 1) = approx_e_helper (n-1) (it *(it+1)) sum + (1.0/ fromIntegral it)
+  | otherwise = sum
+
+approx_e :: Int -> Double
+approx_e n = approx_e_helper n 1 1.0
