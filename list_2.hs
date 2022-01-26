@@ -60,8 +60,8 @@ mean xs = if null xs
 
 
 -- Exercise 5. Implement foldr without checking it out in the documentation.
-
-
+-- foldr :: (a -> b -> b) -> b -> [a] -> b
+-- foldr f z [x1,x2,..,xn] = f(x1,f(x2(..f(xn-1,f(xn,z))..))
 
 -- Exercise 6. Express map via foldr and foldl. Hint: it may be a good idea to use z=[].
 myMapR f = foldr(\x xs -> f x : xs ) []

@@ -33,11 +33,13 @@ map1 f xs = foldr (\x acc -> f x : acc) [] xs
 -- f.g = \x -> f (g x)
 -- map (\x -> negate (abs x)) [1,-2,3,-4]
 -- map (negate . abs) [1,-2,3,-4]
-
+-- f::a->b, g::b->c 
+comp = \g f x -> g (f x)
 
 
 -- Exercise 4. The expression let x=y in z is a ”syntactic sugar” for a certain expression in lambda calculus. Desugar it.
-
+-- let x=y in z  is equal to let (\x -> y) in z =eta-red. lambdax.y
+-- let x=y in z ~(lambdax -> z)y
 
 
 -- Exercise 5. Let π1 =\x y->x and π2 =\x y->y. Calculate π1.π2 and π2.π1.
@@ -50,7 +52,10 @@ map1 f xs = foldr (\x acc -> f x : acc) [] xs
 
 
 -- Exercise 6. Come up with a lambda expression that cannot be β-reduced to a form that does not allow further β-reduction. 
-
+-- (lambdax -> (x x)) = z
+-- z z = (lambdax)-> (x x))z =beta-red.= z z
+-- infinite loop
+-- for example: (\x -> (x x)) (\y -> (y y))
 
 
 -- Exercise 7. Let us define
