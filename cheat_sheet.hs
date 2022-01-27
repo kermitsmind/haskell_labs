@@ -42,7 +42,8 @@ squareSum [] = 0
 squareSum x = foldl (+) 0 (map (^2) x)
 
 -- foldleft starting from acc we do something with elements from the list from the first one, the acc is on the left side
--- foldright starting from acc on the right side we do something with elements on the right foldr 'f' 0 [1,2,3] = 1 'f' (foldr 0 [2,3]) = ...  1 'f' (2 'f' (3 'f' 0))   
+-- foldright starting from acc on the right side we do something with elements on the right 
+-- foldr 'f' 0 [1,2,3] = 1 'f' (foldr 0 [2,3]) = ...  1 'f' (2 'f' (3 'f' 0))   
 
 
 
@@ -71,7 +72,7 @@ pi1 = \ x y -> x
 pi2 = \ x y -> y
 
 
--- compounds in Haskellu
+-- compounds in Haskell
 -- compound operation (.) 
 -- should be the same
 s = \g f x -> g (f x)

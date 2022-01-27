@@ -59,6 +59,7 @@ comp = \g f x -> g (f x)
 -- for example: (\x -> (x x)) (\y -> (y y))
 
 
+
 -- Exercise 7. Let us define
 --          data Point = Point Float Float
 --          data Shape = Circle Point Float | Rectangle Point Point
@@ -96,6 +97,7 @@ instance Show a => Show (Vector3 a) where
 -- Exercise 9. Consider the following IntOrString type
 --         data IntOrString = Word String | Number Int
 -- Make it an instance of classes Eq and Show.
+data IntOrString = Word String | Number Int deriving (Show, Eq)
 
 
 

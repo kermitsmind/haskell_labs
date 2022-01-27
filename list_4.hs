@@ -53,6 +53,7 @@ allPairs xs ys =
 -- do f <- mf; fmap f mx == mf >>= (\f -> fmap f mx)
 
 
+
 -- Exercise 5. Explain how the do notation makes the list comprehension redundant.
 
 
